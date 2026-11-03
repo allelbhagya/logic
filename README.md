@@ -9,6 +9,8 @@ to feed weights bias into model -> logic gates classification
 - 50 epochs
 
 <img width="521" height="454" alt="image" src="https://github.com/user-attachments/assets/72c2d42d-8d82-4a9e-878c-36ee80fd9774" />
+<img width="1190" height="390" alt="image" src="https://github.com/user-attachments/assets/986d6156-9f42-48ed-a0fb-11c1a0eb6c7d" />
+
 
 ##### run
 
