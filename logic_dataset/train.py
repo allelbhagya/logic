@@ -6,6 +6,8 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 
+from sklearn.metrics import confusion_matrix, classification_report
+
 tf.keras.utils.set_random_seed(42)
 
 with open("data/logic_gates.json") as f:
@@ -22,17 +24,17 @@ y = []
 
 for sample in data:
 
-    W1 = sample["weights"]["W1"]
-    W2 = sample["weights"]["W2"]
+    w1 = sample["weights"]["w1"]
+    w2 = sample["weights"]["w2"]
 
     b1 = sample["biases"]["b1"]
     b2 = sample["biases"]["b2"]
 
     # 3 tokens per network / 3 tokens per sample
     tokens = [
-        [W1[0][0], W1[0][1], b1[0], 0],
-        [W1[1][0], W1[1][1], b1[1], 0],
-        [W2[0][0], W2[0][1], b2[0], 1]
+        [w1[0][0], w1[0][1], b1[0], 0],
+        [w1[1][0], w1[1][1], b1[1], 0],
+        [w2[0][0], w2[0][1], b2[0], 1]
     ]
 
     X.append(tokens)
@@ -103,7 +105,7 @@ history = model.fit(
     X_train,
     y_train,
     validation_data=(X_val, y_val),
-    epochs=100,
+    epochs=50,
     batch_size=4,
     verbose=1
 )
@@ -112,4 +114,17 @@ loss, accuracy = model.evaluate(X_val, y_val)
 
 print("val acc:", accuracy)
 
-model.save("logic_transformer.keras")
+y_pred = np.argmax(model.predict(X_val), axis=1)
+
+print("\nconfusion matrix:")
+print(confusion_matrix(y_val, y_pred))
+
+print("\nclassification report:")
+print(classification_report(
+    y_val,
+    y_pred,
+    target_names=["AND", "OR", "XOR"],
+    zero_division=0
+))
+
+model.save("model/logic_transformer.keras")
