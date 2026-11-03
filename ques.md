@@ -1,0 +1,3 @@
+- can a model (transformer?) understand the pattern of weights and bia, without feedforward pass -> classify into logic gates?
+- reason in the parameter space
+- model operate on param space, understand meaningful weight updates
