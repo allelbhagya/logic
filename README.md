@@ -4,7 +4,13 @@ https://rikiyat.github.io/blog/weight-space-programming/ - to play ideas on this
 
 to feed weights bias into model -> logic gates classification
 
-# test -1
+# test -1: trained neural nets on transformer
+- 100 x 3 class: XOR, AND, OR
+- 50 epochs
+
+<img width="521" height="454" alt="image" src="https://github.com/user-attachments/assets/72c2d42d-8d82-4a9e-878c-36ee80fd9774" />
+
+##### run
 
 ```bash
 git clone https://github.com/allelbhagya/logic
@@ -14,7 +20,7 @@ python train.py
 ```
 
 ## generate.py
-generating weights bias for arch:
+generating weights bias for model/ 300 samples of neural network w&b
 
 2 input neurons
 2 hidden neurons
